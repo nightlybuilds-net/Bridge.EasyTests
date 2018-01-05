@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.right{
+    float: right !important;
+}
+
+.w3-padding-top-16{
+    padding-top: 16px;
+}
+
+.w3-padding-top-24{
+    padding-top: 24px;
+}
+
+.w3-padding-top-64{
+    padding-top: 64px;
+}
+
+#userAgent div{
+    max-width: none;
+    background: #BCC9C3;
+    color: #4E5C65;
+    text-align: center;
+    margin-top: 4px;
+    padding: 7px;
+}
+
+.full-width{
+    max-width: none !important;
+}
+
+.w3-custom-blue{
+    background-color: #166796;
+    color: white;
+}
+
+#filters form{
+    padding: 0 15%;
+    background-color: transparent;
+}
+.overview{
+    width: 65%;
+    margin: 0 auto;
+}
+
+.overview h2{
+    text-align: center;
+}
+
+.testCompleted{    
+    width: 65%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.testsList{
+    width: 65%;
+    margin: 0 auto;
+}
+
+.test-ok{
+    border-left: green solid 10px;
+}
+
+.test-ko{
+    border-left: red solid 10px;
+}
+
+#tableTestsList strong, i{
+    margin-right: 5px;
+}
+
+.hand{
+    cursor: pointer;
+}
+
+.inner-row{
+    padding-left: 36px !important;
+}
+
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
