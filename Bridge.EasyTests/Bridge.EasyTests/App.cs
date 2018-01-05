@@ -9,6 +9,7 @@ namespace Bridge.EasyTests
             var runner = new Runner();
             knockout.ko.applyBindings(runner);
             runner.Run();
+
         }
     }
 }

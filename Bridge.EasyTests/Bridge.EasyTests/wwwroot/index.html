@@ -64,15 +64,15 @@
                         <div class="w3-row">
                             <div class="w3-third w3-container">
                                 <h2>
-                                    <i class="fa fa-code"></i> <!--ko text: TotalAssertions--><!--/ko--> assertions</h2>
+                                    <i class="fa fa-code"></i> <!--ko text: TotalTests--><!--/ko--> tests</h2>
                             </div>
                             <div class="w3-third w3-container">
                                 <h2>
-                                    <i class="fa fa-check w3-text-green"></i> <!--ko text: PassedAsserts--><!--/ko--> passed</h2>
+                                    <i class="fa fa-check w3-text-green"></i> <!--ko text: PassedTests--><!--/ko--> passed</h2>
                             </div>
                             <div class="w3-third w3-container">
                                 <h2>
-                                    <i class="fa fa-close w3-text-red"></i> <!--ko text: FailedAsserts--><!--/ko--> failed</h2>
+                                    <i class="fa fa-close w3-text-red"></i> <!--ko text: FailedTests--><!--/ko--> failed</h2>
                             </div>
                         </div>
                     </div>
@@ -100,13 +100,11 @@
                     <td  class="hand">
                         <i class="fa fa-eye"></i><!--ko text: Group--><!--/ko--></td>
                 </tr>
-                <!-- ko foreach: EasyAssertions -->
-                <tr  data-bind="attr:{'id':$parent.Id}" >
-                    <td colspan="3" class="test-ok inner-row" data-bind="css : {'test-ok':Success, 'test-ko': Success == false}" style="background-color:#f1f1f1;">
-                        <span data-bind="text: Description"></span>
+                <tr  data-bind="if: Success == false" >
+                    <td colspan="3" class="test-ko inner-row" style="background-color:#f1f1f1;">
+                        <span data-bind="text: Error"></span>
                     </td>
                 </tr>
-                <!-- /ko -->
              
             </table>
         </div>

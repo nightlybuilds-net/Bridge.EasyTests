@@ -61,9 +61,12 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="AssertResult.cs" />
+    <Compile Include="Asserts\EasyAsserts.cs" />
+    <Compile Include="Asserts\ShouldExtensions.cs" />
     <Compile Include="Attributes\TestAttribute.cs" />
     <Compile Include="Attributes\TestMethodAttribute.cs" />
-    <Compile Include="EasyAssert.cs" />
+    <Compile Include="prova2.cs" />
+    <Compile Include="ShouldException.cs" />
     <Compile Include="TestDescriptor.cs" />
     <Compile Include="Runner.cs" />
     <Compile Include="TestBase.cs" />

@@ -4,6 +4,6 @@
     {
         public virtual string Description => this.GetType().Name;
 
-        protected AssertResult Result => AssertResult.Result;
+        //protected AssertResult Result => AssertResult.Result;
     }
 }
