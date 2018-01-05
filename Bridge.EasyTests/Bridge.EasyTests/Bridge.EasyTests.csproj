@@ -60,15 +60,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="AssertResult.cs" />
     <Compile Include="Attributes\TestAttribute.cs" />
     <Compile Include="Attributes\TestMethodAttribute.cs" />
     <Compile Include="EasyAssert.cs" />
     <Compile Include="TestDescriptor.cs" />
-    <Compile Include="Prova.cs" />
     <Compile Include="Runner.cs" />
     <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ExampleTest.txt" />
     <Content Include="wwwroot\bridge\bridge.console.js" />
     <Content Include="wwwroot\bridge\Bridge.EasyTests.js" />
     <Content Include="wwwroot\bridge\Bridge.EasyTests.meta.js" />
