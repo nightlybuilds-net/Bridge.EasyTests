@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using Bridge.EasyTests.Attributes;
 using Retyped.Primitive;
 using static Retyped.knockout;
 
@@ -10,19 +11,25 @@ namespace Bridge.EasyTests
 {
     internal class TestDescriptor
     {
-        public string Name => this.Method.Name;
-        public MethodInfo Method { get; set; }
+
+        public string Name { get; set; }
         public string Group { get; set; }
+
+        public Type Type { get; set; }
+        public MethodInfo Method { get; set; }
         
         public Exception FailAssert { get; set; }
-        public bool Success { get; set; }
+        public bool Success => FailAssert == null;
+
+        public string Error => FailAssert == null ? string.Empty : $"{FailAssert.GetType().Name}: {FailAssert.Message}";
+        public string Stack => FailAssert?.StackTrace;
+        
         public int Time { get; set; }
 
-        public string Error => FailAssert?.ToString();
-        public Type Type { get; set; }
 
-
-        
+        /// <summary>
+        /// Run test.
+        /// </summary>
         public void RunTest()
         {
             var instance = Activator.CreateInstance(this.Type);
@@ -33,12 +40,10 @@ namespace Bridge.EasyTests
             try
             {
                 this.Method.Invoke(instance);
-                this.Success = true;
             }
             catch (Exception e)
             {
                 this.FailAssert = e;
-                this.Success = false;
             }
             finally
             {

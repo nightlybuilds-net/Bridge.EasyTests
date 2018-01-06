@@ -69,10 +69,8 @@
     <Compile Include="ShouldException.cs" />
     <Compile Include="TestDescriptor.cs" />
     <Compile Include="Runner.cs" />
-    <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ExampleTest.txt" />
     <Content Include="wwwroot\bridge\bridge.console.js" />
     <Content Include="wwwroot\bridge\Bridge.EasyTests.js" />
     <Content Include="wwwroot\bridge\Bridge.EasyTests.meta.js" />

@@ -71,25 +71,30 @@ namespace Bridge.EasyTests
         private void DiscoverTest()
         {
             var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(s => s.GetTypes())
-                .Where(w=> !w.IsInterface && typeof(TestBase).IsAssignableFrom(w) && !w.IsAbstract)
+                .Where(w=>!w.FullName.ToLower().StartsWith("system"))
+                .Where(w=>!w.IsInterface && !w.IsAbstract)
+                .Where(w=>w.GetCustomAttributes(typeof(TestAttribute),true).Any())
                 .ToList();
             
             // run all tests method
             types.ForEach(f =>
             {
-                var instance = Activator.CreateInstance(f);
-                var testClass = (TestBase) instance;
+                var testAtt = (TestAttribute)f.GetCustomAttributes(typeof(TestAttribute), true).First();
+                
 
                 var testMethods = f.GetMethods().Where(w => w.IsPublic)
                     .Where(w => w.GetCustomAttributes(typeof(TestMethodAttribute), true).Any()).ToList();
                 
                 testMethods.ForEach(method =>
                 {
+                    var attr = (TestMethodAttribute) method.GetCustomAttributes(typeof(TestMethodAttribute), true).First();
+                    
                     var testDescr = new TestDescriptor
                     {
                         Type = f,
                         Method = method,
-                        Group = string.IsNullOrEmpty(testClass.Description) ? instance.GetType().Name : testClass.Description
+                        Group = string.IsNullOrEmpty(testAtt.Description) ? f.Name : testAtt.Description,
+                        Name = string.IsNullOrEmpty(attr.Description) ? method.Name : attr.Description
                     };
                     
                     this._internalTests.Add(testDescr);

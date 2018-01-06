@@ -4,7 +4,8 @@ using Bridge.EasyTests.Attributes;
 
 namespace Bridge.EasyTests
 {
-    public class prova2 : TestBase
+    [Test()]
+    public class prova2 
     {
         [TestMethod]
         public void Pippo()
@@ -14,7 +15,7 @@ namespace Bridge.EasyTests
             t.ShouldBeEquals(3);
         }
         
-        [TestMethod]
+        [TestMethod("ciccioooooo")]
         public void Somma()
         {
             var t = 2;
@@ -30,6 +31,7 @@ namespace Bridge.EasyTests
             });
             
         }
+
     }
 
     class PippoException : Exception
