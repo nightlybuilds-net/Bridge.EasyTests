@@ -18,6 +18,8 @@ namespace Bridge.EasyTests
         public KnockoutObservable<int> PassedTests;
         public KnockoutObservable<int> TotalTime;
         public KnockoutObservable<bool> Running;
+        
+        public KnockoutObservable<bool> HidePassed;
 
 
         public Runner()
@@ -28,10 +30,20 @@ namespace Bridge.EasyTests
             this.PassedTests = ko.observable.Self<int>();
             this.TotalTime = ko.observable.Self<int>();
             this.Running = ko.observable.Self<bool>();
-
+            
             this.BrowserInfo = Global.Navigator.AppVersion;
+
+            // hide passed test management
+            this.HidePassed = ko.observable.Self<bool>(false);
+            this.HidePassed.subscribe(value =>
+            {
+                this.Tests.Self().Where(w=>w.Success).ForEach(f=>f.Visible.Self(!value));
+            });
         }
 
+        
+        
+        
         
 
         /// <summary>

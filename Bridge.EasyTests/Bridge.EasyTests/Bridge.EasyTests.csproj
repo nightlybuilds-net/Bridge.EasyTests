@@ -65,8 +65,13 @@
     <Compile Include="Asserts\ShouldExtensions.cs" />
     <Compile Include="Attributes\TestAttribute.cs" />
     <Compile Include="Attributes\TestMethodAttribute.cs" />
+    <Compile Include="Exceptions\BeFalseException.cs" />
+    <Compile Include="Exceptions\BeTrueException.cs" />
+    <Compile Include="Exceptions\EasyTestBaseException.cs" />
+    <Compile Include="Exceptions\EqualException.cs" />
+    <Compile Include="Exceptions\NotEqualException.cs" />
+    <Compile Include="Exceptions\ThrowsException.cs" />
     <Compile Include="prova2.cs" />
-    <Compile Include="ShouldException.cs" />
     <Compile Include="TestDescriptor.cs" />
     <Compile Include="Runner.cs" />
   </ItemGroup>

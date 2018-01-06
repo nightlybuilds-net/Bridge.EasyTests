@@ -29,12 +29,12 @@
         <div class="w3-row w3-light-grey" id="filters">
             <form class="w3-container w3-card-4">
                 <div class="w3-row-padding">
-                    <!-- <div class="w3-half w3-center">
+                    <div class="w3-half w3-center">
                         <p>
-                            <input class="w3-check" type="checkbox" checked="checked" id="hidePassedTests">
+                            <input class="w3-check" type="checkbox" id="hidePassedTests" data-bind="checked:HidePassed">
                             <label for="hidePassedTests">Hide passed tests</label>
                         </p>
-                    </div> -->
+                    </div> 
                     <div class="w3-center">
                         <p>
                             <label>Seleziona gruppo da visualizzare </label>
@@ -93,7 +93,7 @@
         <!-- List of tests -->
         <div class="w3-row w3-padding-top-24 testsList">
             <table class="w3-table w3-bordered w3-border" id="tableTestsList" data-bind="foreach: Tests">
-                <tr class="test-ko">
+                <tr class="test-ko" data-bind="visible:Visible">
                     <td data-bind="css : {'test-ok':Success, 'test-ko': Success == false}">
                         <strong data-bind="text: ($index() + 1)"></strong>
                         <!--ko text: Name-->
@@ -102,7 +102,7 @@
                     <td>
                         <i class="fa fa-clock-o"></i>
                         <!--ko text: Time-->
-                        <!--/ko-->
+                        <!--/ko--> ms
                     </td>
                     <td>
                         <i class="fa fa-files-o"></i>
@@ -110,10 +110,10 @@
                         <!--/ko-->
                     </td>
                 </tr>
-                <tr data-bind="if: Success == false">
+                <tr data-bind="if: Success == false, visible:Visible" >
                     <td colspan="3" class="test-ko inner-row">
                         <p class="error-message" >
-                            <i class="w3-text-grey" data-bind="text: Error">Qui sarà visualizzato il messaggio di errore</i>
+                            <i class="w3-text-grey" data-bind="text: Error"></i>
                         </p>
                         <pre data-bind="text: Stack">
                           

@@ -25,6 +25,14 @@ namespace Bridge.EasyTests
         public string Stack => FailAssert?.StackTrace;
         
         public int Time { get; set; }
+        
+        
+        public KnockoutObservable<bool> Visible { get; set; }
+
+        public TestDescriptor()
+        {
+            this.Visible = ko.observable.Self<bool>(true);
+        }
 
 
         /// <summary>

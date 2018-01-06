@@ -1,4 +1,7 @@
-﻿namespace Bridge.EasyTests.Asserts
+﻿using System;
+using Bridge.EasyTests.Exceptions;
+
+namespace Bridge.EasyTests.Asserts
 {
     public static class ShouldExtensions
     {
@@ -7,14 +10,13 @@
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="secondObj"></param>
-        public static T ShouldBeEquals<T>(this T obj, T secondObj)
+        public static void ShouldBeEquals<T>(this T obj, T secondObj)
         {
             var equal = EasyAsserts.ObjectEqual(obj, secondObj);
 
             if (!equal)
-                throw new ShouldException(string.Format($"Expected {secondObj.ToCompareString()}. Value: {obj.ToCompareString()}"));
+                throw new EqualException(string.Format($"Expected {secondObj.ToCompareString()}. Value: {obj.ToCompareString()}"));
             
-            return obj;
         }
         
         /// <summary>
@@ -22,23 +24,15 @@
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="secondObj"></param>
-        public static T ShouldBeNotEquals<T>(this T obj, T secondObj)
+        public static void ShouldBeNotEquals<T>(this T obj, T secondObj)
         {
             var equal = EasyAsserts.ObjectEqual(obj, secondObj);
 
             if (equal)
-                throw new ShouldException(string.Format($"Expected {secondObj.ToCompareString()} different from {obj.ToCompareString()}. Are Equal!"));
+                throw new NotEqualException(string.Format($"Expected {secondObj.ToCompareString()} different from {obj.ToCompareString()}. Are Equal!"));
             
-            return obj;
         }
 
-
-
-       
-        
-        
-
-       
        
     }
 }
