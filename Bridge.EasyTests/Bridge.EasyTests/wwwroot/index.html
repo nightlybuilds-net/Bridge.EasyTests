@@ -8,9 +8,11 @@
 <link rel="stylesheet" href="css/w3.css">
 <link rel="stylesheet" href="css/style.css">
 
-
 <body>
-
+<div class="spinner-wrapper" data-bind="css: {'w3-hide': Running() == false}">
+    <div class="spinner"></div>
+    <div class="spinner-text">Loading...</div>
+</div>
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
         <div class="w3-bar w3-custom-blue w3-card" id="titleHeader">
@@ -36,14 +38,14 @@
                         </p>
                     </div> 
                     <div class="w3-center">
-                        <p>
-                            <label>Seleziona gruppo da visualizzare </label>
-                            <select id="selectFilter">
-                                <option>Tutti</option>-->
-                                <option>Gruppo di test 1</option>-->
-                                <option>Gruppo di test 2</option>-->
-                            </select>
-                        </p>
+                        <!--<p>-->
+                            <!--<label>Seleziona gruppo da visualizzare </label>-->
+                            <!--<select id="selectFilter">-->
+                                <!--<option>Tutti</option>&ndash;&gt;-->
+                                <!--<option>Gruppo di test 1</option>&ndash;&gt;-->
+                                <!--<option>Gruppo di test 2</option>&ndash;&gt;-->
+                            <!--</select>-->
+                        <!--</p>-->
                     </div>
                 </div>
             </form>
@@ -135,7 +137,8 @@
         </p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+    <script src="Scripts/knockoutjs.js"></script>
 
     <script src="bridge/bridge.js"></script>
     <script src="bridge/bridge.console.js"></script>

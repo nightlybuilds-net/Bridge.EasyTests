@@ -57,6 +57,7 @@
   <ItemGroup>
     <None Include="bridge.json" />
     <None Include="packages.config" />
+    <None Include="wwwroot\Scripts\knockoutjs.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
@@ -83,6 +84,7 @@
     <Content Include="wwwroot\bridge\bridge.meta.js" />
     <Content Include="wwwroot\bridge\index.html" />
     <Content Include="wwwroot\bridge\index_knock.html" />
+    <Content Include="wwwroot\css\fontawesome.css" />
     <Content Include="wwwroot\css\style.css" />
     <Content Include="wwwroot\css\w3.css" />
     <Content Include="wwwroot\index.html" />
