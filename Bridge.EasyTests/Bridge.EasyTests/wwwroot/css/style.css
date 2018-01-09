@@ -130,11 +130,11 @@ a:active,a:hover{
     margin-right: 5px;
 }
 
-#tableTestsList tr:nth-child(4n), tr:nth-child(4n-1){
+.whiteRow{
     background-color: #ffffff;
 }
 
-#tableTestsList tr:nth-child(4n-3), tr:nth-child(4n-2){
+.greyRow{
     background-color: #f1f1f1;
 }
 

@@ -42,9 +42,6 @@ namespace Bridge.EasyTests
         }
 
         
-        
-        
-        
 
         /// <summary>
         /// Run tests
@@ -52,7 +49,7 @@ namespace Bridge.EasyTests
         public void Run()
         {
             this.Running.Self(true);
-            
+
             this.DiscoverTest(); // discovery all tests
             
             this.TotalTests.Self(this._internalTests.Count); // total tests found
@@ -65,6 +62,7 @@ namespace Bridge.EasyTests
             this.Running.Self(false);
         }
 
+        
         /// <summary>
         /// Run 
         /// </summary>
@@ -105,8 +103,10 @@ namespace Bridge.EasyTests
                     {
                         Type = f,
                         Method = method,
-                        Group = string.IsNullOrEmpty(testAtt.Description) ? f.Name : testAtt.Description,
-                        Name = string.IsNullOrEmpty(attr.Description) ? method.Name : attr.Description
+                        Group = f.Name,
+                        GroupDescription = string.IsNullOrEmpty(testAtt.Description) ? string.Empty : $"[{testAtt.Description}]",
+                        Name = method.Name,
+                        NameDescription = string.IsNullOrEmpty(attr.Description) ? string.Empty : $"[{attr.Description}]",
                     };
                     
                     this._internalTests.Add(testDescr);

@@ -11,7 +11,7 @@
 <body>
 <div class="spinner-wrapper" data-bind="css: {'w3-hide': Running() == false}">
     <div class="spinner"></div>
-    <div class="spinner-text">Loading...</div>
+    <div class="spinner-text">Running...</div>
 </div>
     <!-- Navbar (sit on top) -->
     <div class="w3-top">
@@ -31,22 +31,13 @@
         <div class="w3-row w3-light-grey" id="filters">
             <form class="w3-container w3-card-4">
                 <div class="w3-row-padding">
-                    <div class="w3-half w3-center">
+                    <div class="w3-center">
                         <p>
                             <input class="w3-check" type="checkbox" id="hidePassedTests" data-bind="checked:HidePassed">
                             <label for="hidePassedTests">Hide passed tests</label>
                         </p>
                     </div> 
-                    <div class="w3-center">
-                        <!--<p>-->
-                            <!--<label>Seleziona gruppo da visualizzare </label>-->
-                            <!--<select id="selectFilter">-->
-                                <!--<option>Tutti</option>&ndash;&gt;-->
-                                <!--<option>Gruppo di test 1</option>&ndash;&gt;-->
-                                <!--<option>Gruppo di test 2</option>&ndash;&gt;-->
-                            <!--</select>-->
-                        <!--</p>-->
-                    </div>
+                 
                 </div>
             </form>
         </div>
@@ -95,24 +86,27 @@
         <!-- List of tests -->
         <div class="w3-row w3-padding-top-24 testsList">
             <table class="w3-table w3-bordered w3-border" id="tableTestsList" data-bind="foreach: Tests">
-                <tr class="test-ko" data-bind="visible:Visible">
+                <tr class="test-ko" data-bind="visible:Visible, css:{whiteRow: $index()%2==0,greyRow: $index()%2!=0 }">
                     <td data-bind="css : {'test-ok':Success, 'test-ko': Success == false}">
                         <strong data-bind="text: ($index() + 1)"></strong>
-                        <!--ko text: Name-->
-                        <!--/ko-->
+                        <!--ko text: Name--><!--/ko-->
+                        <i class="w3-text-grey" data-bind="text: NameDescription"></i>
                     </td>
+                   
                     <td>
+                        <i class="fa fa-object-group"></i>
+                        <!--ko text: Group--><!--/ko-->
+                        <i class="w3-text-grey" data-bind="text: GroupDescription"></i>
+                    </td>
+                    
+                    <td class="w3-right">
+                        
                         <i class="fa fa-clock-o"></i>
                         <!--ko text: Time-->
                         <!--/ko--> ms
                     </td>
-                    <td>
-                        <i class="fa fa-files-o"></i>
-                        <!--ko text: Group-->
-                        <!--/ko-->
-                    </td>
                 </tr>
-                <tr data-bind="if: Success == false, visible:Visible" >
+                <tr data-bind="if: Success == false, visible:Visible, css:{whiteRow: $index()%2==0,greyRow: $index()%2!=0 }" >
                     <td colspan="3" class="test-ko inner-row">
                         <p class="error-message" >
                             <i class="w3-text-grey" data-bind="text: Error"></i>
@@ -133,7 +127,7 @@
     <!-- Footer -->
     <footer class="w3-center w3-light-grey w3-padding-16">
         <p>Powered by
-            <a href="#" title="" target="_blank" class="">Bridge.EasyTest</a>
+            <a href="https://github.com/markjackmilian/Bridge.EasyTests" title="" target="_blank" class="">Bridge.EasyTest</a>
         </p>
     </footer>
 

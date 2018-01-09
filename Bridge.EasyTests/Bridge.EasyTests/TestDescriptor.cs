@@ -13,7 +13,9 @@ namespace Bridge.EasyTests
     {
 
         public string Name { get; set; }
+        public string NameDescription { get; set; }
         public string Group { get; set; }
+        public string GroupDescription { get; set; }
 
         public Type Type { get; set; }
         public MethodInfo Method { get; set; }
