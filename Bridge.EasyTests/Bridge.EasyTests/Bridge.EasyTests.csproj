@@ -57,16 +57,24 @@
   <ItemGroup>
     <None Include="bridge.json" />
     <None Include="packages.config" />
+    <None Include="wwwroot\Scripts\knockoutjs.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="AssertResult.cs" />
+    <Compile Include="Asserts\EasyAsserts.cs" />
+    <Compile Include="Asserts\ShouldExtensions.cs" />
     <Compile Include="Attributes\TestAttribute.cs" />
     <Compile Include="Attributes\TestMethodAttribute.cs" />
-    <Compile Include="EasyAssert.cs" />
+    <Compile Include="Exceptions\BeFalseException.cs" />
+    <Compile Include="Exceptions\BeTrueException.cs" />
+    <Compile Include="Exceptions\EasyTestBaseException.cs" />
+    <Compile Include="Exceptions\EqualException.cs" />
+    <Compile Include="Exceptions\NotEqualException.cs" />
+    <Compile Include="Exceptions\ThrowsException.cs" />
+    <Compile Include="prova2.cs" />
     <Compile Include="TestDescriptor.cs" />
-    <Compile Include="Prova.cs" />
     <Compile Include="Runner.cs" />
-    <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="wwwroot\bridge\bridge.console.js" />
@@ -76,6 +84,7 @@
     <Content Include="wwwroot\bridge\bridge.meta.js" />
     <Content Include="wwwroot\bridge\index.html" />
     <Content Include="wwwroot\bridge\index_knock.html" />
+    <Content Include="wwwroot\css\fontawesome.css" />
     <Content Include="wwwroot\css\style.css" />
     <Content Include="wwwroot\css\w3.css" />
     <Content Include="wwwroot\index.html" />

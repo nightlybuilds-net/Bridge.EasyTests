@@ -3,45 +3,67 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using Bridge.EasyTests.Attributes;
+using Retyped.Primitive;
 using static Retyped.knockout;
 
 namespace Bridge.EasyTests
 {
     internal class TestDescriptor
     {
-        public string Name => this.Method.Name;
-        public MethodInfo Method { get; set; }
-        public object Instance { get; set; }
-        public string Group { get; set; }
-        
-        public KnockoutObservableArray<EasyAssert> EasyAssertions { get;  }
-        public KnockoutObservable<bool> Success { get; set; }
-        public KnockoutObservable<int> Time { get; set; }
 
+        public string Name { get; set; }
+        public string NameDescription { get; set; }
+        public string Group { get; set; }
+        public string GroupDescription { get; set; }
+
+        public Type Type { get; set; }
+        public MethodInfo Method { get; set; }
+        
+        public Exception FailAssert { get; set; }
+        public bool Success => FailAssert == null;
+
+        public string Error => FailAssert == null ? string.Empty : $"{FailAssert.GetType().Name}: {FailAssert.Message}";
+        public string Stack => FailAssert?.StackTrace;
+        
+        public int Time { get; set; }
+        
+        
+        public KnockoutObservable<bool> Visible { get; set; }
 
         public TestDescriptor()
         {
-            this.EasyAssertions = ko.observableArray.Self<EasyAssert>();
-            this.Success = ko.observable.Self<bool>(false);
-            this.Time = ko.observable.Self<int>(0);
+            this.Visible = ko.observable.Self<bool>(true);
         }
-        
+
+
+        /// <summary>
+        /// Run test.
+        /// </summary>
         public void RunTest()
         {
+            var instance = Activator.CreateInstance(this.Type);
+            
             var watch = new Stopwatch();
             watch.Start();
-            var assertResult = this.Method.Invoke(this.Instance) as AssertResult;
-            watch.Stop();
 
-            if (assertResult == null)
+            try
             {
-                Console.WriteLine($"Method: {this.Method.Name} in group {this.Group} not return AssertResult!");
-                return;
+                this.Method.Invoke(instance);
             }
-            
-            this.Time.Self((int)watch.ElapsedMilliseconds);
-            this.EasyAssertions.Self(assertResult.Asserts.ToArray());
-            this.Success.Self(this.EasyAssertions.Self().All(a=>a.Success));
+            catch (Exception e)
+            {
+                this.FailAssert = e;
+            }
+            finally
+            {
+                watch.Stop();
+                this.Time = (int)watch.ElapsedMilliseconds;
+                
+                // check of type is disposable
+                var disposable = instance as IDisposable;
+                disposable?.Dispose();
+            }
         }
 
     }

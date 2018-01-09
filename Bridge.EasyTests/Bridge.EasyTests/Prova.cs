@@ -3,25 +3,7 @@ using System.Threading;
 
 namespace Bridge.EasyTests
 {
-    public class Prova : TestBase
-    {
-        [TestMethod]
-        public AssertResult Eccolo()
-        {
-            return this.Result.WithAssert(() => true, "buono");
-        }
-
-        
-        [TestMethod]
-        public AssertResult TeNo()
-        {
-            Thread.Sleep(1000);
-            return this.Result
-                .WithAssert(() => false, "Male")
-                .WithAssert(() => true, "secondo invece bene");
-        }
-
-    }
+   
 
 
     public class TestoTyutto : TestBase
