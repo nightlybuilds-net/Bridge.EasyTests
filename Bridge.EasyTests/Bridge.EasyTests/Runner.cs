@@ -3,44 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Bridge.EasyTests.Attributes;
 using Bridge.Html5;
-using static Retyped.knockout;
 
 namespace Bridge.EasyTests
 {
     internal class Runner
     {
-        private List<TestDescriptor> _internalTests = new List<TestDescriptor>();
-        
-        public string BrowserInfo { get; set; }
-        public KnockoutObservableArray<TestDescriptor> Tests;
-        public KnockoutObservable<int> TotalTests;
-        public KnockoutObservable<int> FailedTests;
-        public KnockoutObservable<int> PassedTests;
-        public KnockoutObservable<int> TotalTime;
-        public KnockoutObservable<bool> Running;
-        
-        public KnockoutObservable<bool> HidePassed;
-
+        private readonly List<TestDescriptor> _internalTests = new List<TestDescriptor>();
+        private readonly RunnerViewModel _runnerViewModel;
 
         public Runner()
         {
-            this.Tests = ko.observableArray.Self<TestDescriptor>();
-            this.TotalTests = ko.observable.Self<int>();
-            this.FailedTests = ko.observable.Self<int>();
-            this.PassedTests = ko.observable.Self<int>();
-            this.TotalTime = ko.observable.Self<int>();
-            this.Running = ko.observable.Self<bool>();
-            
-            this.BrowserInfo = Global.Navigator.AppVersion;
-
-            // hide passed test management
-            this.HidePassed = ko.observable.Self<bool>(false);
-            this.HidePassed.subscribe(value =>
-            {
-                this.Tests.Self().Where(w=>w.Success).ForEach(f=>f.Visible.Self(!value));
-            });
+            this._runnerViewModel = new RunnerViewModel();
+            this._runnerViewModel.BrowserInfo = Global.Navigator.AppVersion;
         }
-
         
 
         /// <summary>
@@ -48,18 +23,18 @@ namespace Bridge.EasyTests
         /// </summary>
         public void Run()
         {
-            this.Running.Self(true);
+            this._runnerViewModel.Running = true;
 
             this.DiscoverTest(); // discovery all tests
             
-            this.TotalTests.Self(this._internalTests.Count); // total tests found
-            this.RunTests(); // run all test for each group
+            this._runnerViewModel.TotalTests = this._internalTests.Count; // total tests found
+            this.RunTests(); // run all test 
 
-            this.FailedTests.Self(this._internalTests.Count(c=>!c.Success)); // failed tests
-            this.PassedTests.Self(this._internalTests.Count(c=>c.Success)); // passed Tests
-            this.TotalTime.Self(this.Tests.Self().Sum(s => s.Time));
+            this._runnerViewModel.FailedTests = this._internalTests.Count(c=>!c.Success); // failed tests
+            this._runnerViewModel.PassedTests = this._internalTests.Count(c=>c.Success); // passed Tests
+            this._runnerViewModel.TotalTime = this._runnerViewModel.Tests.Items.Sum(s=>s.Item1.Time);
 
-            this.Running.Self(false);
+            this._runnerViewModel.Running = false;
         }
 
         
@@ -71,7 +46,9 @@ namespace Bridge.EasyTests
             this._internalTests.ForEach(f =>
             {
                 f.RunTest();
-                this.Tests.push(f);
+                //this.Tests.push(f);
+                
+                this._runnerViewModel.Tests.Add(f);
             });
         }
 
@@ -104,9 +81,9 @@ namespace Bridge.EasyTests
                         Type = f,
                         Method = method,
                         Group = f.Name,
-                        GroupDescription = string.IsNullOrEmpty(testAtt.Description) ? string.Empty : $"[{testAtt.Description}]",
+                        GroupDescription = string.IsNullOrEmpty(testAtt.Description) ? string.Empty : testAtt.Description,
                         Name = method.Name,
-                        NameDescription = string.IsNullOrEmpty(attr.Description) ? string.Empty : $"[{attr.Description}]",
+                        NameDescription = string.IsNullOrEmpty(attr.Description) ? string.Empty : attr.Description,
                     };
                     
                     this._internalTests.Add(testDescr);

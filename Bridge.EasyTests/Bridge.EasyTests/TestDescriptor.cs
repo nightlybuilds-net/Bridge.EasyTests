@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using Bridge.EasyTests.Attributes;
-using Retyped.Primitive;
-using static Retyped.knockout;
 
 namespace Bridge.EasyTests
 {
@@ -28,13 +23,6 @@ namespace Bridge.EasyTests
         
         public int Time { get; set; }
         
-        
-        public KnockoutObservable<bool> Visible { get; set; }
-
-        public TestDescriptor()
-        {
-            this.Visible = ko.observable.Self<bool>(true);
-        }
 
 
         /// <summary>
