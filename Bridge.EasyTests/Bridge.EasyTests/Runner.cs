@@ -43,11 +43,9 @@ namespace Bridge.EasyTests
         /// </summary>
         private void RunTests()
         {
-            this._internalTests.ForEach(f =>
+            this._internalTests.ForEach(async f =>
             {
-                f.RunTest();
-                //this.Tests.push(f);
-                
+                await f.RunTest();
                 this._runnerViewModel.Tests.Add(f);
             });
         }

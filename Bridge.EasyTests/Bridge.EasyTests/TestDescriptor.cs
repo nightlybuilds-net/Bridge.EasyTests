@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Bridge.EasyTests
 {
@@ -28,8 +29,11 @@ namespace Bridge.EasyTests
         /// <summary>
         /// Run test.
         /// </summary>
-        public void RunTest()
+        public async Task RunTest()
         {
+            // check if method return rask await
+            var isTask = this.Method.ReturnType == typeof(Task);
+            
             var instance = Activator.CreateInstance(this.Type);
             
             var watch = new Stopwatch();
@@ -37,7 +41,10 @@ namespace Bridge.EasyTests
 
             try
             {
-                this.Method.Invoke(instance);
+                if (isTask)
+                    await (Task) this.Method.Invoke(instance);
+                else
+                    this.Method.Invoke(instance);
             }
             catch (Exception e)
             {
