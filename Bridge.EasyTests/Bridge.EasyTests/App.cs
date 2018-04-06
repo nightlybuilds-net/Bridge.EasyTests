@@ -3,10 +3,10 @@ namespace Bridge.EasyTests
 {
     public class App
     {
-        public static void Main()
+        public static async void Main()
         {
             var runner = new Runner();
-            runner.Run();
+            await runner.Run();
         }
     }
 }

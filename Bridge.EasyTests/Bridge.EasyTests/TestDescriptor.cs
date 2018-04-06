@@ -7,6 +7,8 @@ namespace Bridge.EasyTests
 {
     internal class TestDescriptor
     {
+        public event EventHandler OnTestComplete;
+        public bool Completed { get; private set; }
 
         public string Name { get; set; }
         public string NameDescription { get; set; }
@@ -45,6 +47,7 @@ namespace Bridge.EasyTests
                     await (Task) this.Method.Invoke(instance);
                 else
                     this.Method.Invoke(instance);
+                
             }
             catch (Exception e)
             {
@@ -54,7 +57,9 @@ namespace Bridge.EasyTests
             {
                 watch.Stop();
                 this.Time = (int)watch.ElapsedMilliseconds;
-                
+                this.Completed = true;
+                this.OnTestComplete?.Invoke(this,null);
+
                 // check of type is disposable
                 var disposable = instance as IDisposable;
                 disposable?.Dispose();

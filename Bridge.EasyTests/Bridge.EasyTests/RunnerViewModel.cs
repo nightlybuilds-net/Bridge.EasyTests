@@ -11,6 +11,7 @@ namespace Bridge.EasyTests
         private readonly HTMLElement _totalTime = Document.GetElementById("totalTime");
         private readonly HTMLElement _browserInfo = Document.GetElementById("browserInfo");
         private readonly HTMLElement _loader = Document.GetElementById("loader");
+        private readonly HTMLElement _inRunning = Document.GetElementById("inRunning");
 
 
         public TestsCollectionManager Tests = new TestsCollectionManager();
@@ -78,6 +79,14 @@ namespace Bridge.EasyTests
         public string BrowserInfo
         {
             set { _browserInfo.InnerHTML = value; }
+        }
+
+        /// <summary>
+        /// Set all test completed
+        /// </summary>
+        public void SetAllTestRunned()
+        {
+            this._inRunning.Hidden = true;
         }
     }
 }
