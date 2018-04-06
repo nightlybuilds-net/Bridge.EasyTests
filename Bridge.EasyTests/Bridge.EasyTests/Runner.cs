@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Bridge.EasyTests.Attributes;
 using Bridge.Html5;
 
@@ -21,18 +22,18 @@ namespace Bridge.EasyTests
         /// <summary>
         /// Run tests
         /// </summary>
-        public void Run()
+        public async Task Run()
         {
             this._runnerViewModel.Running = true;
 
             this.DiscoverTest(); // discovery all tests
             
             this._runnerViewModel.TotalTests = this._internalTests.Count; // total tests found
-            this.RunTests(); // run all test 
+            await this.RunTests(); // run all test 
 
-            this._runnerViewModel.FailedTests = this._internalTests.Count(c=>!c.Success); // failed tests
-            this._runnerViewModel.PassedTests = this._internalTests.Count(c=>c.Success); // passed Tests
-            this._runnerViewModel.TotalTime = this._runnerViewModel.Tests.Items.Sum(s=>s.Item1.Time);
+//            this._runnerViewModel.FailedTests = this._internalTests.Count(c=>!c.Success); // failed tests
+//            this._runnerViewModel.PassedTests = this._internalTests.Count(c=>c.Success); // passed Tests
+//            this._runnerViewModel.TotalTime = this._runnerViewModel.Tests.Items.Sum(s=>s.Item1.Time);
 
             this._runnerViewModel.Running = false;
         }
@@ -41,13 +42,14 @@ namespace Bridge.EasyTests
         /// <summary>
         /// Run 
         /// </summary>
-        private void RunTests()
+        private Task RunTests()
         {
             this._internalTests.ForEach(async f =>
             {
                 await f.RunTest();
                 this._runnerViewModel.Tests.Add(f);
             });
+            return Task.FromResult(0);
         }
 
         /// <summary>
@@ -81,15 +83,25 @@ namespace Bridge.EasyTests
                         Group = f.Name,
                         GroupDescription = string.IsNullOrEmpty(testAtt.Description) ? string.Empty : testAtt.Description,
                         Name = method.Name,
-                        NameDescription = string.IsNullOrEmpty(attr.Description) ? string.Empty : attr.Description,
+                        NameDescription = string.IsNullOrEmpty(attr.Description) ? string.Empty : attr.Description
                     };
                     
                     this._internalTests.Add(testDescr);
+                    
+                    testDescr.OnTestComplete += TestDescrOnOnTestComplete;
                 });
 
             });
         }
 
-       
+        private void TestDescrOnOnTestComplete(object sender, EventArgs eventArgs)
+        {
+            var completedTest = this._internalTests.Where(w => w.Completed);
+            this._runnerViewModel.FailedTests = completedTest.Count(c=>!c.Success); // failed tests
+            this._runnerViewModel.PassedTests = completedTest.Count(c=>c.Success); // passed Tests
+            this._runnerViewModel.TotalTime = this._runnerViewModel.Tests.Items.Sum(s=>s.Item1.Time);
+            if(this._internalTests.Count()==completedTest.Count())
+                this._runnerViewModel.SetAllTestRunned();
+        }
     }
 }

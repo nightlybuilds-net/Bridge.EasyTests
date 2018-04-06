@@ -1,11 +1,11 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Bridge.EasyTests.Asserts;
-using Bridge.EasyTests.Attributes;
-
-namespace Bridge.EasyTests
-{
+﻿//using System;
+//using System.Threading;
+//using System.Threading.Tasks;
+//using Bridge.EasyTests.Asserts;
+//using Bridge.EasyTests.Attributes;
+//
+//namespace Bridge.EasyTests
+//{
 //    [Test]
 //    public class prova2 
 //    {
@@ -23,6 +23,14 @@ namespace Bridge.EasyTests
 //            await Task.Delay(200);
 //            var t = 2;
 //            t.ShouldBeEquals(3);
+//            
+//        }
+//        
+//        [TestMethod]
+//        public async Task AwaitError()
+//        {
+//            await Task.Delay(1500);
+//            throw new Exception("Error thorwed");
 //            
 //        }
 //
@@ -56,4 +64,4 @@ namespace Bridge.EasyTests
 //    {
 //        
 //    }
-}
+//}
