@@ -6,7 +6,7 @@ namespace Bridge.EasyTests.Attributes
     /// <summary>
     /// Attribute for test class
     /// </summary>
-    [System.AttributeUsage(System.AttributeTargets.Class)] 
+    [AttributeUsage(AttributeTargets.Class)] 
     public class TestAttribute : Attribute
     {
         public string Description { get; }
@@ -18,7 +18,7 @@ namespace Bridge.EasyTests.Attributes
 
         public TestAttribute(string description )
         {
-            Description = description;
+            this.Description = description;
         }
     }
 }

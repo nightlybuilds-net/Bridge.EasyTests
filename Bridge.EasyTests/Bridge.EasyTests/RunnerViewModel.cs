@@ -1,4 +1,4 @@
-using Bridge.Html5;
+﻿using Bridge.Html5;
 
 namespace Bridge.EasyTests
 {
@@ -37,7 +37,7 @@ namespace Bridge.EasyTests
         /// </summary>
         public bool Running
         {
-            set { _loader.Hidden = !value; }
+            set { this._loader.Hidden = !value; }
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Bridge.EasyTests
         /// </summary>
         public int TotalTests
         {
-            set { _totalTests.InnerHTML = $"{value} tests"; }
+            set { this._totalTests.InnerHTML = $"{value} tests"; }
         }
         
         /// <summary>
@@ -53,7 +53,7 @@ namespace Bridge.EasyTests
         /// </summary>
         public int PassedTests
         {
-            set { _passedTests.InnerHTML = $"{value} passed"; }
+            set { this._passedTests.InnerHTML = $"{value} passed"; }
         }
         
         /// <summary>
@@ -61,7 +61,7 @@ namespace Bridge.EasyTests
         /// </summary>
         public int FailedTests
         {
-            set { _failedTests.InnerHTML = $"{value} failed"; }
+            set { this._failedTests.InnerHTML = $"{value} failed"; }
         }
         
         /// <summary>
@@ -69,7 +69,7 @@ namespace Bridge.EasyTests
         /// </summary>
         public int TotalTime
         {
-            set { _totalTime.InnerHTML = $"Tests completed in {value} ms"; }
+            set { this._totalTime.InnerHTML = $"Tests completed in {value} ms"; }
         }
         
         /// <summary>
@@ -77,7 +77,7 @@ namespace Bridge.EasyTests
         /// </summary>
         public string BrowserInfo
         {
-            set { _browserInfo.InnerHTML = value; }
+            set { this._browserInfo.InnerHTML = value; }
         }
 
         /// <summary>
