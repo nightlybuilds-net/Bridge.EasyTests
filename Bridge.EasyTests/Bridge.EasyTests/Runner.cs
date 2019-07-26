@@ -88,7 +88,7 @@ namespace Bridge.EasyTests
                     
                     this._internalTests.Add(testDescr);
                     
-                    testDescr.OnTestComplete += TestDescrOnOnTestComplete;
+                    testDescr.OnTestComplete += this.TestDescrOnOnTestComplete;
                 });
 
             });

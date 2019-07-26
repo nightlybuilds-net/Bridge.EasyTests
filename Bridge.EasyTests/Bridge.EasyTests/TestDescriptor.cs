@@ -19,10 +19,10 @@ namespace Bridge.EasyTests
         public MethodInfo Method { get; set; }
         
         public Exception FailAssert { get; set; }
-        public bool Success => FailAssert == null;
+        public bool Success => this.FailAssert == null;
 
-        public string Error => FailAssert == null ? string.Empty : $"{FailAssert.GetType().Name}: {FailAssert.Message}";
-        public string Stack => FailAssert?.StackTrace;
+        public string Error => this.FailAssert == null ? string.Empty : $"{this.FailAssert.GetType().Name}: {this.FailAssert.Message}";
+        public string Stack => this.FailAssert?.StackTrace;
         
         public int Time { get; set; }
         
