@@ -17,6 +17,26 @@
   </metadata>
   <files>
     <file src="Bridge.EasyTests\Asserts\EasyAsserts.cs" target="content\EasyTests\Asserts" />
+    <file src="Bridge.EasyTests\Asserts\ShouldExtensions.cs" target="content\EasyTests\Asserts" />
+    <file src="Bridge.EasyTests\Attributes\TestAttribute.cs" target="content\EasyTests\Attributes" />
+    <file src="Bridge.EasyTests\Attributes\TestMethodAttribute.cs" target="content\EasyTests\Attributes" />
+    <file src="Bridge.EasyTests\Exceptions\BeFalseException.cs" target="content\EasyTests\Exceptions" />
+    <file src="Bridge.EasyTests\Exceptions\BeTrueException.cs" target="content\EasyTests\Exceptions" />
+    <file src="Bridge.EasyTests\Exceptions\EasyTestBaseException.cs" target="content\EasyTests\Exceptions" />
+    <file src="Bridge.EasyTests\Exceptions\EqualException.cs" target="content\EasyTests\Exceptions" />
+    <file src="Bridge.EasyTests\Exceptions\NotEqualException.cs" target="content\EasyTests\Exceptions" />
+    <file src="Bridge.EasyTests\Exceptions\ThrowsException.cs" target="content\EasyTests\Exceptions" />
+    <file src="Bridge.EasyTests\App.cs" target="content\EasyTests" />
+    <file src="Bridge.EasyTests\AssertResult.cs" target="content\EasyTests" />
+    <file src="Bridge.EasyTests\CollectionManager.cs" target="content\EasyTests" />
+    <file src="Bridge.EasyTests\Runner.cs" target="content\EasyTests" />
+    <file src="Bridge.EasyTests\RunnerViewModel.cs" target="content\EasyTests" />
+    <file src="Bridge.EasyTests\Test.cs" target="content\EasyTests" />
+    <file src="Bridge.EasyTests\TestDescriptor.cs" target="content\EasyTests" />
+    <file src="Bridge.EasyTests\TestsCollectionManager.cs" target="content\EasyTests" />
+    <file src="content\wwwroot\css\style.css" target="content\wwwroot\css" />
+    <file src="content\wwwroot\css\w3.css" target="content\wwwroot\css" />
+    <file src="content\wwwroot\index.html" target="content\wwwroot" />
     
   </files>
 </package>
