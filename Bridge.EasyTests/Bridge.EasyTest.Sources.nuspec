@@ -16,7 +16,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="content\EasyTests\Asserts\EasyAsserts.cs" target="content\EasyTests\Asserts\EasyAsserts.cs" />
+    <file src="Asserts\EasyAsserts.cs" target="content\EasyTests\Asserts\EasyAsserts.cs" />
     <file src="content\EasyTests\Asserts\ShouldExtensions.cs" target="content\EasyTests\Asserts\ShouldExtensions.cs" />
     <file src="content\EasyTests\Attributes\TestAttribute.cs" target="content\EasyTests\Attributes\TestAttribute.cs" />
     <file src="content\EasyTests\Attributes\TestMethodAttribute.cs" target="content\EasyTests\Attributes\TestMethodAttribute.cs" />
