@@ -16,26 +16,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="Bridge.EasyTests\Asserts\EasyAsserts.cs" target="content\EasyTests\Asserts\EasyAsserts.cs" />
-    <file src="content\EasyTests\Asserts\ShouldExtensions.cs" target="content\EasyTests\Asserts\ShouldExtensions.cs" />
-    <file src="content\EasyTests\Attributes\TestAttribute.cs" target="content\EasyTests\Attributes\TestAttribute.cs" />
-    <file src="content\EasyTests\Attributes\TestMethodAttribute.cs" target="content\EasyTests\Attributes\TestMethodAttribute.cs" />
-    <file src="content\EasyTests\Exceptions\BeFalseException.cs" target="content\EasyTests\Exceptions\BeFalseException.cs" />
-    <file src="content\EasyTests\Exceptions\BeTrueException.cs" target="content\EasyTests\Exceptions\BeTrueException.cs" />
-    <file src="content\EasyTests\Exceptions\EasyTestBaseException.cs" target="content\EasyTests\Exceptions\EasyTestBaseException.cs" />
-    <file src="content\EasyTests\Exceptions\EqualException.cs" target="content\EasyTests\Exceptions\EqualException.cs" />
-    <file src="content\EasyTests\Exceptions\NotEqualException.cs" target="content\EasyTests\Exceptions\NotEqualException.cs" />
-    <file src="content\EasyTests\Exceptions\ThrowsException.cs" target="content\EasyTests\Exceptions\ThrowsException.cs" />
-    <file src="content\EasyTests\App.cs" target="content\EasyTests\App.cs" />
-    <file src="content\EasyTests\AssertResult.cs" target="content\EasyTests\AssertResult.cs" />
-    <file src="content\EasyTests\CollectionManager.cs" target="content\EasyTests\CollectionManager.cs" />
-    <file src="content\EasyTests\Runner.cs" target="content\EasyTests\Runner.cs" />
-    <file src="content\EasyTests\RunnerViewModel.cs" target="content\EasyTests\RunnerViewModel.cs" />
-    <file src="content\EasyTests\Test.cs" target="content\EasyTests\Test.cs" />
-    <file src="content\EasyTests\TestDescriptor.cs" target="content\EasyTests\TestDescriptor.cs" />
-    <file src="content\EasyTests\TestsCollectionManager.cs" target="content\EasyTests\TestsCollectionManager.cs" />
-    <file src="content\wwwroot\css\style.css" target="content\wwwroot\css\style.css" />
-    <file src="content\wwwroot\css\w3.css" target="content\wwwroot\css\w3.css" />
-    <file src="content\wwwroot\index.html" target="content\wwwroot\index.html" />
+    <file src="Bridge.EasyTests\Asserts\EasyAsserts.cs" target="content\EasyTests\Asserts" />
+    
   </files>
 </package>
