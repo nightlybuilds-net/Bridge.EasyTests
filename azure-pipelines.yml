@@ -28,10 +28,22 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
+    vstsFeed: '50f38f6b-0db1-4768-bab2-4e814a2ede21'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'off'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '19'
+    minorVersion: '0'
+    patchVersion: '0'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '50f38f6b-0db1-4768-bab2-4e814a2ede21'
 
 
