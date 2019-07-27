@@ -34,9 +34,9 @@
     <file src="Bridge.EasyTests\Test.cs" target="content\EasyTests" />
     <file src="Bridge.EasyTests\TestDescriptor.cs" target="content\EasyTests" />
     <file src="Bridge.EasyTests\TestsCollectionManager.cs" target="content\EasyTests" />
-    <file src="content\wwwroot\css\style.css" target="content\wwwroot\css" />
-    <file src="content\wwwroot\css\w3.css" target="content\wwwroot\css" />
-    <file src="content\wwwroot\index.html" target="content\wwwroot" />
+    <file src="Bridge.EasyTests\wwwroot\css\style.css" target="content\wwwroot\css" />
+    <file src="Bridge.EasyTests\wwwroot\css\w3.css" target="content\wwwroot\css" />
+    <file src="Bridge.EasyTests\wwwroot\index.html" target="content\wwwroot" />
     
   </files>
 </package>
