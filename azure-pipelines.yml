@@ -33,7 +33,7 @@ steps:
   inputs:
     command: 'pack'
     vstsFeed: '50f38f6b-0db1-4768-bab2-4e814a2ede21'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: 'Bridge.EasyTest.Sources.nuspec'
     versioningScheme: 'byPrereleaseNumber'
     majorVersion: '19'
     minorVersion: '0'
