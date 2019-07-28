@@ -34,7 +34,7 @@ steps:
     command: 'pack'
     vstsFeed: '50f38f6b-0db1-4768-bab2-4e814a2ede21'
     packagesToPack: 'Bridge.EasyTests/Bridge.EasyTest.Sources.nuspec'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'off'
 
 - task: NuGetCommand@2
   inputs:
