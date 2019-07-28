@@ -32,7 +32,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'Bridge.EasyTests/Bridge.EasyTest.Sources.nuspec'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'off'
 
 - task: NuGetCommand@2
   inputs:
