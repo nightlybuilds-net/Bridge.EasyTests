@@ -2,6 +2,13 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <Company>Marco Milani</Company>
+    <Authors>Marco Milani</Authors>
+    <PackageId>Bridge.EasyTest</PackageId>
+    <Version>19.1.*</Version>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8EBD25EC-D724-4357-8CA6-09ADCEE90F0B}</ProjectGuid>
