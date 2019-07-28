@@ -2,7 +2,6 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Bridge.EasyTest.Sources</id>
-    <version>$version$</version>
     <title>Bridge.EasyTest.Sources</title>
     <authors>Marco Milani</authors>
     <owners>Marco Milani</owners>
