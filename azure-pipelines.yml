@@ -14,8 +14,23 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   #BUILD_BUILDNUMBER: '$(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth)$(Rev:.r)' 
-
+  #name: '$(Year:yyyy).$(Month).$(DayOfMonth).$(Rev:r)'
+  
 steps:
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your powershell commands here.
+           
+      # Use the environment variables input below to pass secret variables to this script.
+      
+      $year= Get-Date –format yy;
+      $month= (Get-Date).month;
+      Write-Host "##vso[task.setvariable variable=version]$year.$month.$(Build.BuildId)"
+
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -32,7 +47,8 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'Bridge.EasyTests/Bridge.EasyTest.Sources.nuspec'
-    versioningScheme: 'off'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'version'
 
 - task: NuGetCommand@2
   inputs:
@@ -40,5 +56,11 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '50f38f6b-0db1-4768-bab2-4e814a2ede21'
+
+
+
+
+
+
 
 
