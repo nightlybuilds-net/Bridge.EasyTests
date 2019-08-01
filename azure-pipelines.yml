@@ -17,6 +17,13 @@ variables:
   #name: '$(Year:yyyy).$(Month).$(DayOfMonth).$(Rev:r)'
   
 steps:
+
+- task: VariableSetTask@1
+  inputs:
+    VariableName: 'Build.BuildNumber'
+    Value: '18.0.0'
+    IsSecret: false
+
 - task: CmdLine@2
   inputs:
     script: |
@@ -24,9 +31,7 @@ steps:
       
       echo Hello world
       
-      echo $(BUILD_BUILDNUMBER)
-      echo $(name)
-      echo $(Build.BuildNumber):
+      echo $(Build.BuildNumber)
 
 - task: PowerShell@2
   inputs:
