@@ -28,7 +28,7 @@ steps:
       
       $year= Get-Date –format yy;
       $month= (Get-Date).month;
-      Write-Host "##vso[task.setvariable variable=version]$year.$month.$(Build.BuildId)"
+      Write-Host "##vso[task.setvariable variable=version]$year.$month.$(Rev:.r)"
 
 
 - task: NuGetToolInstaller@1
