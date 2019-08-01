@@ -35,8 +35,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'Bridge.EasyTests/Bridge.EasyTest.Sources.nuspec'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'version'
+    versioningScheme: 'byBuildNumber'
 
 - task: PublishBuildArtifacts@1
   inputs:
