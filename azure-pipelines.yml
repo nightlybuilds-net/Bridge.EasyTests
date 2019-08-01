@@ -50,17 +50,8 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'version'
 
-- task: NuGetCommand@2
+- task: PublishBuildArtifacts@1
   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: '005528d4-8639-4091-8a03-c3749454b522'
-
-
-
-
-
-
-
-
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    ArtifactName: 'drop-et'
+    publishLocation: 'Container'
