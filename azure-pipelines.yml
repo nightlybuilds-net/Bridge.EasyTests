@@ -21,7 +21,7 @@ steps:
 - task: VariableSetTask@1
   inputs:
     VariableName: 'Build.BuildNumber'
-    Value: '18.0.0'
+    Value: '18.0.0-$(Rev:.r)'
     IsSecret: false
 
 - task: CmdLine@2
